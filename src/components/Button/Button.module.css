@@ -1,0 +1,29 @@
+.confirmButton {
+  border: none;
+  background-color: rgb(0, 123, 255);
+  padding: 5px 21px;
+  color: white;
+  border-radius: 10px;
+}
+
+.cancelButton {
+  border-color: rgb(0, 123, 255);
+  background-color: white;
+  color: rgb(0, 123, 255);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.simpleButton {
+  padding: 7px 35px;
+  outline: none;
+  background-color: rgb(0, 123, 255);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin-top: 20px;
+}
+
+button:hover {
+  cursor: pointer;
+}

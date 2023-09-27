@@ -1,0 +1,6 @@
+.PropertyFormBlock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 20px 40px;
+}

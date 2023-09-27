@@ -1,0 +1,16 @@
+.input {
+  width: 250px;
+  border: none;
+  border-bottom: 1px solid gray;
+  background-color: transparent;
+  outline: none;
+  padding: 0px;
+  display: block;
+  position: relative;
+}
+
+.err {
+  font-size: smaller;
+  color: red;
+  text-align: center;
+}

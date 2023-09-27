@@ -1,0 +1,22 @@
+.reference {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  right: 16%;
+  bottom: 20%;
+  border-radius: 15px;
+  background-color: white;
+  padding: 5px 15px;
+}
+
+.reference p {
+  margin: 0;
+}
+
+.ref {
+  background-color: rgb(255, 0, 0);
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+}

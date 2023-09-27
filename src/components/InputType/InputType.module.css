@@ -1,0 +1,8 @@
+.err {
+  font-size: smaller;
+  color: red;
+  display: block;
+  position: static;
+  text-wrap: nowrap;
+  margin-bottom: 5px;
+}

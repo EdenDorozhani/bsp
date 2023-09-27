@@ -1,0 +1,15 @@
+.cont {
+  display: flex;
+  row-gap: 25px;
+  padding: 40px;
+  flex-wrap: wrap;
+
+  overflow-x: hidden;
+  justify-content: space-between;
+}
+
+@media (max-width: 995px) {
+  .cont {
+    justify-content: space-evenly;
+  }
+}
