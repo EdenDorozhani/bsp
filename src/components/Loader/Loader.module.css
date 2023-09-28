@@ -1,8 +1,10 @@
 .loaderBG {
+  width: 100%;
+  height: 100vh;
   background-color: rgb(255, 255, 255);
-  position: absolute;
-  left: 45%;
-  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .loader {

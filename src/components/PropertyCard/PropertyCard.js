@@ -28,10 +28,10 @@ const PropertieCard = ({
     >
       <motion.div
         className={classes.cardCont}
-        initial={{ y: "200%" }}
-        animate={{ y: 0 }}
-        exit={{ y: "100%" }}
-        transition={{ duration: 0.7 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.8 }}
       >
         <div className={classes.relative}>
           <PropertyType content={propertyType} />

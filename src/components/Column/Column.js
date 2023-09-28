@@ -7,7 +7,7 @@ const Column = (props) => {
       initial={{ y: "100%" }}
       animate={{ y: 0 }}
       exit={{ y: "100%" }}
-      transition={{ duration: 0.7 }}
+      transition={{ duration: 0.5 }}
       className={classes.column}
     >
       {props.children}
