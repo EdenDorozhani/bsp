@@ -33,7 +33,7 @@ const InputString = ({
             : ""
         }
         onChange={onChangeHandler}
-        type="text"
+        type={name === "password" ? "password" : "text"}
         name={!name ? dataUI.name : name}
         className={classes.input}
         disabled={

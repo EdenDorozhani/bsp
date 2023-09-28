@@ -1,9 +1,9 @@
 import PropertiesList from "../PropertiesList";
 import Button from "../Button";
-import FilterInputs from "../FilterInputs";
 import Pagination from "../Pagination";
 import { motion } from "framer-motion";
 import classes from "./Properties.module.css";
+import { actionAfterAnimation } from "./configs";
 
 const Properties = ({
   cardsInfo,
@@ -17,7 +17,16 @@ const Properties = ({
   getInputValues,
   onSearchProperties,
   message,
+  animationComplete,
+  onAnimationComplete,
 }) => {
+  const content = actionAfterAnimation(
+    animationComplete,
+    onAnimationComplete,
+    UIData,
+    getInputValues,
+    onSearchProperties
+  );
   return (
     <>
       <motion.div
@@ -40,31 +49,7 @@ const Properties = ({
           isLoading={isLoading}
         />
       </motion.div>
-      <motion.div
-        className={classes.searchContainer}
-        initial={{ x: "170%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "100%" }}
-        transition={{ duration: 0.9 }}
-      >
-        <div className={classes.searchInputs}>
-          {UIData?.map((data, index) => {
-            return (
-              <FilterInputs
-                key={index}
-                data={data}
-                getInputValues={getInputValues}
-                name={data.name}
-              />
-            );
-          })}
-        </div>
-        <Button
-          content={"Search"}
-          action={onSearchProperties}
-          type={"confirm"}
-        />
-      </motion.div>
+      {content}
       {message ? (
         <h3>{message}</h3>
       ) : (

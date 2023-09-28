@@ -7,6 +7,8 @@ import { formatSearchParams } from "../../helpers";
 import { getFilteredFields, getPropertiesData } from "./PropertiesPage.actions";
 
 const PropertiesPage = () => {
+  const [animationComplete, setAnimationComplete] = useState(false);
+
   const [pagination, setPagination] = useState({
     page: 1,
     from: 1,
@@ -104,6 +106,10 @@ const PropertiesPage = () => {
     inputValues.current = { ...inputValues.current, [name]: value };
   };
 
+  const onAnimationComplete = () => {
+    setAnimationComplete(true);
+  };
+
   return (
     <Properties
       nextItems={onNextItems}
@@ -117,6 +123,8 @@ const PropertiesPage = () => {
       message={message}
       getInputValues={getInputValues}
       onSearchProperties={onSearchPropertiesHandler}
+      onAnimationComplete={onAnimationComplete}
+      animationComplete={animationComplete}
     />
   );
 };
