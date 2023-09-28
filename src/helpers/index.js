@@ -13,64 +13,7 @@ export const modifyedData = (newPropertyUIData) => {
     },
     {
       label: "Property Price",
-      fields: [
-        {
-          name: "business_type",
-          label: "Business Type",
-          mandatory: true,
-          type: {
-            picklistValues: [
-              {
-                label: "For Sale",
-                value: "For Sale",
-              },
-              {
-                label: "To Rent",
-                value: "To Rent",
-              },
-            ],
-            defaultValue: "For Sale",
-            name: "picklist",
-          },
-          isunique: false,
-          nullable: true,
-          editable: true,
-          default: "",
-          headerfield: null,
-          summaryfield: "0",
-          quickcreate: "2",
-        },
-        {
-          name: "price",
-          label: "Price",
-          mandatory: true,
-          type: {
-            name: "currency",
-          },
-          isunique: false,
-          nullable: true,
-          editable: true,
-          default: "",
-          headerfield: null,
-          summaryfield: "1",
-          quickcreate: "2",
-        },
-        {
-          name: "square_price",
-          label: "Price for m2",
-          mandatory: false,
-          type: {
-            name: "currency",
-          },
-          isunique: false,
-          nullable: true,
-          editable: true,
-          default: "",
-          headerfield: null,
-          summaryfield: "0",
-          quickcreate: "1",
-        },
-      ],
+      fields: newPropertyUIData?.fields.slice(49, 52),
     },
     {
       label: "Property Areas",

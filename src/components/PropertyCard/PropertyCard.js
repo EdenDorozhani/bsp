@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropertyType from "../PropertyType";
 import PropertyReference from "../PropertyReference";
 import Paragraph from "../Paragraph/Paragraph";
+import { motion } from "framer-motion";
 
 const PropertieCard = ({
   buisnessType,
@@ -25,7 +26,13 @@ const PropertieCard = ({
       to={`property/${id}/${reference}`}
       style={{ textDecoration: "none", color: "inherit" }}
     >
-      <div className={classes.cardCont}>
+      <motion.div
+        className={classes.cardCont}
+        initial={{ y: "200%" }}
+        animate={{ y: 0 }}
+        exit={{ y: "100%" }}
+        transition={{ duration: 0.7 }}
+      >
         <div className={classes.relative}>
           <PropertyType content={propertyType} />
           <PropertyReference content={reference} type={availability} />
@@ -51,7 +58,7 @@ const PropertieCard = ({
           </div>
           <p className={classes.place}>{`${city}, ${zone}`}</p>
         </div>
-      </div>
+      </motion.div>
     </Link>
   );
 };

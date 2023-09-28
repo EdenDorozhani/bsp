@@ -2,6 +2,7 @@ import PropertiesList from "../PropertiesList";
 import Button from "../Button";
 import FilterInputs from "../FilterInputs";
 import Pagination from "../Pagination";
+import { motion } from "framer-motion";
 import classes from "./Properties.module.css";
 
 const Properties = ({
@@ -18,8 +19,14 @@ const Properties = ({
   message,
 }) => {
   return (
-    <div className={classes.propertiesContainer}>
-      <div className={classes.header}>
+    <>
+      <motion.div
+        className={classes.header}
+        initial={{ x: "170%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={{ duration: 0.9 }}
+      >
         <Button
           content={"New Property"}
           action={onAddNewProperties}
@@ -32,8 +39,14 @@ const Properties = ({
           prevItems={prevItems}
           isLoading={isLoading}
         />
-      </div>
-      <div className={classes.searchContainer}>
+      </motion.div>
+      <motion.div
+        className={classes.searchContainer}
+        initial={{ x: "170%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={{ duration: 0.9 }}
+      >
         <div className={classes.searchInputs}>
           {UIData?.map((data, index) => {
             return (
@@ -51,22 +64,32 @@ const Properties = ({
           action={onSearchProperties}
           type={"confirm"}
         />
-      </div>
+      </motion.div>
       {message ? (
         <h3>{message}</h3>
       ) : (
         <PropertiesList cardsInfo={cardsInfo} isLoading={isLoading} />
       )}
-      <div className={classes.footer}>
-        <Pagination
-          nextItems={nextItems}
-          from={from}
-          to={to}
-          prevItems={prevItems}
-          isLoading={isLoading}
-        />
-      </div>
-    </div>
+      <motion.div
+        className={classes.footer}
+        initial={{ x: "170%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={{ duration: 0.9 }}
+      >
+        {isLoading ? (
+          ""
+        ) : (
+          <Pagination
+            nextItems={nextItems}
+            from={from}
+            to={to}
+            prevItems={prevItems}
+            isLoading={isLoading}
+          />
+        )}
+      </motion.div>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import Button from "../Button";
 import classes from "./ButtonContainer.module.css";
+import { motion } from "framer-motion";
 
 const ButtonContainer = ({
   submit,
@@ -10,14 +11,20 @@ const ButtonContainer = ({
   confirmType,
 }) => {
   return (
-    <div className={classes.btnContainer}>
+    <motion.div
+      className={classes.btnContainer}
+      initial={{ x: "130%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "100%" }}
+      transition={{ duration: 0.7 }}
+    >
       <Button
         action={navigateToProperties}
         content={cancelContent}
         type={cancelType}
       />
       <Button action={submit} content={confirmContent} type={confirmType} />
-    </div>
+    </motion.div>
   );
 };
 
