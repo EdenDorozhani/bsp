@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Login from "../../components/Login";
 import { useNavigate } from "react-router-dom";
-import { session } from "../../helpers";
 import { toast } from "react-toastify";
 import { getSession } from "./LoginPage.actions";
 
@@ -15,11 +14,12 @@ const LoginPage = () => {
   const [notCorrect, setNotCorrect] = useState();
   const navigate = useNavigate();
 
+  const auth = localStorage.getItem("session");
   useEffect(() => {
-    if (session) {
+    if (auth) {
       navigate("properties");
     }
-  }, [session]);
+  }, [auth]);
 
   const onChangeHandler = (name, value) => {
     setInputValue((prevState) => ({ ...prevState, [name]: value }));

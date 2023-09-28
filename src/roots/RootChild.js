@@ -1,17 +1,17 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import Header from "../../components/Header";
+import Header from "../components/Header";
 import { toast } from "react-toastify";
 
-const Root = () => {
+const RootChild = () => {
   const { reference } = useParams();
   const navigate = useNavigate();
 
   //CANCEL BUTTON ACTION
   const onLogOut = () => {
     toast.success("Logged out successfully!");
-    localStorage.clear();
     navigate("/");
+    localStorage.clear();
   };
 
   return (
@@ -22,4 +22,4 @@ const Root = () => {
   );
 };
 
-export default Root;
+export default RootChild;
