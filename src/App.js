@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { useEffect } from "react";
 import { axiosConfigurations } from "./axiosConfig";
 

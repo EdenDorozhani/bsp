@@ -1,15 +1,12 @@
 import classes from "./Column.module.css";
 import { motion } from "framer-motion";
+import { formAnimationOpt } from "./config";
 
 const Column = (props) => {
+  const options = formAnimationOpt();
+
   return (
-    <motion.div
-      initial={{ y: "100%" }}
-      animate={{ y: 0 }}
-      exit={{ y: "100%" }}
-      transition={{ duration: 0.5 }}
-      className={classes.column}
-    >
+    <motion.div {...options} className={classes.column}>
       {props.children}
     </motion.div>
   );

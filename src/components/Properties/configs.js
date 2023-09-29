@@ -13,11 +13,11 @@ export const actionAfterAnimation = (
   return !animationComplete ? (
     <motion.div
       className={classes.searchContainer}
-      initial={{ x: "170%" }}
-      animate={{ x: 0 }}
-      onAnimationComplete={onAnimationComplete}
+      initial={{ opacity: 0, x: 80 }}
+      animate={{ opacity: 1, x: 0 }}
       exit={{ x: "100%" }}
-      transition={{ duration: 0.9 }}
+      transition={{ duration: 1.1 }}
+      onAnimationComplete={onAnimationComplete}
     >
       <div className={classes.searchInputs}>
         {UIData?.map((data, index) => {
@@ -31,7 +31,16 @@ export const actionAfterAnimation = (
           );
         })}
       </div>
-      <Button content={"Search"} action={onSearchProperties} type={"confirm"} />
+
+      {!UIData ? (
+        ""
+      ) : (
+        <Button
+          content={"Search"}
+          action={onSearchProperties}
+          type={"confirm"}
+        />
+      )}
     </motion.div>
   ) : (
     <div className={classes.searchContainer}>
