@@ -16,6 +16,15 @@
   animation: spin 2s linear infinite;
 }
 
+.loaderStart {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

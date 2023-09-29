@@ -13,8 +13,8 @@ const ButtonContainer = ({
   return (
     <motion.div
       className={classes.btnContainer}
-      initial={{ x: "130%" }}
-      animate={{ x: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       exit={{ x: "100%" }}
       transition={{ duration: 0.7 }}
     >

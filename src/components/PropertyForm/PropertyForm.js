@@ -1,5 +1,6 @@
 import ButtonContainer from "../ButtonContainer";
 import Column from "../Column";
+import Loader from "../Loader";
 import PropertyFormBlock from "../PropertyFormBlock";
 
 const NewProperty = ({
@@ -8,27 +9,34 @@ const NewProperty = ({
   submit,
   navigateToProperties,
   errors,
+  isLoading,
 }) => {
   return (
     <>
-      <Column>
-        {dataUI?.map((data, index) => (
-          <PropertyFormBlock
-            errors={errors}
-            key={index}
-            dataUI={data}
-            getInputValues={getInputValues}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Column>
+            {dataUI?.map((data, index) => (
+              <PropertyFormBlock
+                errors={errors}
+                key={index}
+                dataUI={data}
+                getInputValues={getInputValues}
+              />
+            ))}
+          </Column>
+          <ButtonContainer
+            cancelContent={"CANCEL"}
+            confirmContent={"SAVE"}
+            cancelType={"cancel"}
+            confirmType={"confirm"}
+            submit={submit}
+            navigateToProperties={navigateToProperties}
           />
-        ))}
-      </Column>
-      <ButtonContainer
-        cancelContent={"CANCEL"}
-        confirmContent={"SAVE"}
-        cancelType={"cancel"}
-        confirmType={"confirm"}
-        submit={submit}
-        navigateToProperties={navigateToProperties}
-      />
+        </>
+      )}
     </>
   );
 };

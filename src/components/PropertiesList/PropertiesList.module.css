@@ -3,11 +3,6 @@
   row-gap: 25px;
   padding: 40px;
   flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-@media (max-width: 995px) {
-  .cont {
-    justify-content: space-evenly;
-  }
+  justify-content: space-evenly;
+  position: relative;
 }

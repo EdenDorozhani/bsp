@@ -8,6 +8,11 @@ import { getFilteredFields, getPropertiesData } from "./PropertiesPage.actions";
 
 const PropertiesPage = () => {
   const [animationComplete, setAnimationComplete] = useState(false);
+  const [animationType, setAnimationType] = useState({
+    Y_Positive: true,
+    X_Positive: false,
+    X_Negative: false,
+  });
 
   const [pagination, setPagination] = useState({
     page: 1,
@@ -22,7 +27,6 @@ const PropertiesPage = () => {
   const inputValues = useRef();
   const navigate = useNavigate();
   const { newPropertyUIData } = useFetchData();
-
   // GET PROPERTIES CARD DATA
   useEffect(() => {
     if (inputValues.current) return;
@@ -67,6 +71,11 @@ const PropertiesPage = () => {
   //WHEN BUTTON CLICK GET FILTERED PROPERTIES
   const onSearchPropertiesHandler = () => {
     if (!inputValues.current) return;
+    setAnimationType({
+      Y_Positive: true,
+      X_Positive: false,
+      X_Negative: false,
+    });
     setPagination({ ...pagination, page: 1, from: 1, to: 20 });
     const page = pagination.page > 1 ? 1 : pagination.page;
     fetchFilteredProperties(page);
@@ -75,6 +84,11 @@ const PropertiesPage = () => {
   const onNextItems = () => {
     if (filteredItemsData?.moreRecords === false || itemsData === null) return;
     if (itemsData.length === 20) {
+      setAnimationType({
+        Y_Positive: false,
+        X_Positive: true,
+        X_Negative: false,
+      });
       setPagination({
         page: pagination.page + 1,
         from: pagination.from + pagination.itemsForPage,
@@ -86,6 +100,11 @@ const PropertiesPage = () => {
 
   const onPrevItems = () => {
     if (pagination.page > 1) {
+      setAnimationType({
+        Y_Positive: false,
+        X_Positive: false,
+        X_Negative: true,
+      });
       setPagination({
         page: pagination.page - 1,
         from: pagination.from - pagination.itemsForPage,
@@ -125,6 +144,7 @@ const PropertiesPage = () => {
       onSearchProperties={onSearchPropertiesHandler}
       onAnimationComplete={onAnimationComplete}
       animationComplete={animationComplete}
+      animationType={animationType}
     />
   );
 };

@@ -4,6 +4,7 @@ import PropertyType from "../PropertyType";
 import PropertyReference from "../PropertyReference";
 import Paragraph from "../Paragraph/Paragraph";
 import { motion } from "framer-motion";
+import { cardAnimationOpt } from "./configs";
 
 const PropertieCard = ({
   buisnessType,
@@ -20,19 +21,16 @@ const PropertieCard = ({
   bathrooms,
   bedrooms,
   id,
+  animationType,
 }) => {
+  const options = cardAnimationOpt(animationType);
+
   return (
     <Link
       to={`property/${id}/${reference}`}
       style={{ textDecoration: "none", color: "inherit" }}
     >
-      <motion.div
-        className={classes.cardCont}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.8 }}
-      >
+      <motion.div {...options} className={classes.cardCont}>
         <div className={classes.relative}>
           <PropertyType content={propertyType} />
           <PropertyReference content={reference} type={availability} />

@@ -19,6 +19,7 @@ const Properties = ({
   message,
   animationComplete,
   onAnimationComplete,
+  animationType,
 }) => {
   const content = actionAfterAnimation(
     animationComplete,
@@ -31,10 +32,10 @@ const Properties = ({
     <>
       <motion.div
         className={classes.header}
-        initial={{ x: "170%" }}
-        animate={{ x: 0 }}
+        initial={{ opacity: 0, y: -100 }}
+        animate={{ opacity: 1, y: 0 }}
         exit={{ x: "100%" }}
-        transition={{ duration: 0.9 }}
+        transition={{ duration: 1.1 }}
       >
         <Button
           content={"New Property"}
@@ -53,14 +54,18 @@ const Properties = ({
       {message ? (
         <h3>{message}</h3>
       ) : (
-        <PropertiesList cardsInfo={cardsInfo} isLoading={isLoading} />
+        <PropertiesList
+          animationType={animationType}
+          cardsInfo={cardsInfo}
+          isLoading={isLoading}
+        />
       )}
       <motion.div
         className={classes.footer}
-        initial={{ x: "170%" }}
-        animate={{ x: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         exit={{ x: "100%" }}
-        transition={{ duration: 0.9 }}
+        transition={{ duration: 0.8 }}
       >
         {isLoading ? (
           ""

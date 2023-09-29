@@ -76,19 +76,14 @@ const AddNewPropertiesPage = () => {
   };
 
   return (
-    <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <PropertyForm
-          dataUI={propertyBlocksData}
-          getInputValues={getInputValues}
-          submit={addNewPropertiesHandler}
-          navigateToProperties={navigateToProperties}
-          errors={errors}
-        />
-      )}
-    </>
+    <PropertyForm
+      dataUI={propertyBlocksData}
+      getInputValues={getInputValues}
+      submit={addNewPropertiesHandler}
+      navigateToProperties={navigateToProperties}
+      errors={errors}
+      isLoading={isLoading}
+    />
   );
 };
 
