@@ -1,0 +1,18 @@
+.picklist {
+  height: 100px;
+  width: 203px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 49;
+  background-color: white;
+  font-size: smaller;
+}
+
+.picklist div {
+  padding-bottom: 3px;
+}
+
+.picklist div:hover {
+  cursor: pointer;
+  background-color: rgb(206, 206, 206);
+}

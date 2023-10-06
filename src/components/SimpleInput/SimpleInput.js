@@ -1,6 +1,6 @@
 import classes from "./SimpleInput.module.css";
 
-const InputString = ({
+const SimpleInput = ({
   name,
   getInputValues,
   data,
@@ -14,36 +14,28 @@ const InputString = ({
     getInputValues(name, value);
   };
 
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        flexDirection: "column",
-      }}
-    >
-      {data ? <label>{data.label}</label> : ""}
+  const disabled =
+    dataUI?.uitype === "70" ||
+    dataUI?.uitype === "5" ||
+    dataUI?.uitype === "4" ||
+    disable;
 
+  const configDefaultValue = dataUI
+    ? typeof dataUI.value === "object"
+      ? dataUI.value.label
+      : dataUI.value
+    : "";
+
+  return (
+    <div className={classes.simple}>
+      {data ? <label>{data.label}</label> : ""}
       <input
-        defaultValue={
-          dataUI
-            ? typeof dataUI.value === "object"
-              ? dataUI.value.label
-              : dataUI.value
-            : ""
-        }
+        defaultValue={configDefaultValue}
         onChange={onChangeHandler}
         type={name === "password" ? "password" : "text"}
         name={!name ? dataUI.name : name}
         className={classes.input}
-        disabled={
-          dataUI?.uitype === "70" ||
-          dataUI?.uitype === "5" ||
-          dataUI?.uitype === "4" ||
-          disable
-            ? true
-            : false
-        }
+        disabled={disabled}
         placeholder={placeholder && placeholder}
       />
       {errors && <span className={classes.err}>{errors}</span>}
@@ -51,4 +43,4 @@ const InputString = ({
   );
 };
 
-export default InputString;
+export default SimpleInput;

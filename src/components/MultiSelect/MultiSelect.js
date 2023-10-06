@@ -1,6 +1,5 @@
 import Select from "react-select";
 import { customStyles, configTypeOfMulti } from "./MultiSelect.config";
-import SimpleInput from "../SimpleInput";
 
 const InputMulti = ({
   value,
@@ -27,13 +26,15 @@ const InputMulti = ({
     getInputValues(action.name, values);
   };
 
+  const isBoolean = filterInputData?.type?.name === "boolean";
+
   return (
     <div>
       {filterInputData ? <label>{filterInputData.label}</label> : ""}
       {options.map((option, index) => (
         <Select
           isClearable={true}
-          isMulti={filterInputData?.type?.name === "boolean" ? false : true}
+          isMulti={!isBoolean}
           name={name}
           key={index}
           placeholder="Select an option"

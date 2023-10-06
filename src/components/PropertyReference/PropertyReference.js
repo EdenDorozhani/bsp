@@ -1,6 +1,6 @@
 import classes from "./PropertyReference.module.css";
 
-const PropertieReference = ({ content }) => {
+const PropertyReference = ({ content }) => {
   return (
     <div className={classes.reference}>
       <p>{content}</p> <div className={classes.ref}></div>
@@ -8,4 +8,4 @@ const PropertieReference = ({ content }) => {
   );
 };
 
-export default PropertieReference;
+export default PropertyReference;

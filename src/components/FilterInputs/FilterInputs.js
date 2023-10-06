@@ -17,7 +17,6 @@ const FilterInputs = ({ data, getInputValues }) => {
         />
       );
       break;
-
     default:
       content = (
         <InputType

@@ -1,9 +1,11 @@
 import CheckBox from "../CheckBox";
+import ComplexInput from "../ComplexInput.js/ComplexInput";
 import MultiSelect from "../MultiSelect";
 import OptGroupSelect from "../OptGroupSelect";
 import OptSelect from "../OptSelect";
 import SimpleInput from "../SimpleInput";
 import classes from "./InputType.module.css";
+import { faMagnifyingGlass, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const InputField = ({
   type,
@@ -13,6 +15,12 @@ const InputField = ({
   dataUI,
   picklistOptions,
   errors,
+  openModal,
+  filterOptions,
+  showOptions,
+  getComplexValue,
+  input,
+  onFilterOwnerClick,
 }) => {
   let component;
 
@@ -72,6 +80,25 @@ const InputField = ({
         />
       );
       break;
+    case "reference":
+    case "10":
+      component = (
+        <ComplexInput
+          stIcon={faMagnifyingGlass}
+          ndIcon={faPlus}
+          name={inputName}
+          getInputValues={getInputValues}
+          placeholder="Type to search"
+          openModal={openModal}
+          filterOptions={filterOptions}
+          showOptions={showOptions}
+          getComplexValue={getComplexValue}
+          input={input}
+          onFilterOwnerClick={onFilterOwnerClick}
+          dataUI={dataUI}
+        />
+      );
+      break;
     default:
       component = (
         <SimpleInput
@@ -83,14 +110,7 @@ const InputField = ({
       );
   }
   return (
-    <div
-      style={{
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "end",
-      }}
-    >
+    <div className={classes.inputContainer}>
       {errors && <span className={classes.err}>{errors}</span>}
       {component}
     </div>

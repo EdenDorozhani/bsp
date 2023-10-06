@@ -19,7 +19,7 @@ const LoginPage = () => {
     if (auth) {
       navigate("properties");
     }
-  }, [auth]);
+  }, []);
 
   const onChangeHandler = (name, value) => {
     setInputValue((prevState) => ({ ...prevState, [name]: value }));

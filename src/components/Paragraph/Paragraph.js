@@ -6,7 +6,7 @@ const Paragraph = ({ type, content, price }) => {
   return (
     <span className={paragraph}>
       {price && <span>&#8364;</span>}
-      {content}
+      {Math.trunc(content)}
     </span>
   );
 };

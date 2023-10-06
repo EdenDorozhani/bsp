@@ -1,7 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import App from "../App";
 
-const Root = () => {
+const RootParent = () => {
   return (
     <>
       <App />
@@ -10,4 +10,4 @@ const Root = () => {
   );
 };
 
-export default Root;
+export default RootParent;

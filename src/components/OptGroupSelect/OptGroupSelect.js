@@ -3,7 +3,7 @@ import classes from "./OptGroupSelect.module.css";
 const GroupType = ({ options, name, getInputValues, dataUI }) => {
   let users;
   let groups;
-  if (!options.users && !options.groups) {
+  if (!options?.users && !options?.groups) {
     return;
   } else {
     users = Object.values(options?.users);

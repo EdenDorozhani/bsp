@@ -5,8 +5,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
-import ManageAuth from "./components/ManageAuth";
-import Root from "./roots/Root";
+import RootParent from "./roots/RootParent";
 import PropertiesPage from "./pages/PropertiesPage";
 import AddPropertyPage from "./pages/AddPropertyPage";
 import EditPropertyPage from "./pages/EditPropertyPage";
@@ -15,7 +14,7 @@ import RootChild from "./roots/RootChild";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <RootParent />,
     children: [
       {
         index: true,
@@ -23,11 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/properties",
-        element: (
-          <ManageAuth>
-            <RootChild />
-          </ManageAuth>
-        ),
+        element: <RootChild />,
         children: [
           {
             index: true,

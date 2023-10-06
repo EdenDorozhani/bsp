@@ -2,12 +2,12 @@ import classes from "./Column.module.css";
 import { motion } from "framer-motion";
 import { formAnimationOpt } from "./config";
 
-const Column = (props) => {
+const Column = ({ children }) => {
   const options = formAnimationOpt();
 
   return (
     <motion.div {...options} className={classes.column}>
-      {props.children}
+      {children}
     </motion.div>
   );
 };

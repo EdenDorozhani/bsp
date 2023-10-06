@@ -1,16 +1,35 @@
 .input {
-  width: 250px;
+  width: 246px;
   border: none;
   border-bottom: 1px solid gray;
   background-color: transparent;
   outline: none;
   padding: 0px;
+  padding-left: 4px;
   display: block;
   position: relative;
+}
+
+input:hover {
+  border-bottom-color: #007bff;
+}
+
+input:focus {
+  border-bottom-color: #007bff;
 }
 
 .err {
   font-size: smaller;
   color: red;
   text-align: center;
+}
+
+.simple {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.complex {
+  width: 200px;
 }

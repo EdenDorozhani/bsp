@@ -1,44 +1,48 @@
 import ButtonContainer from "../ButtonContainer";
 import Column from "../Column";
-import Loader from "../Loader";
 import PropertyFormBlock from "../PropertyFormBlock";
 
-const NewProperty = ({
+const PropertyForm = ({
   dataUI,
   getInputValues,
   submit,
   navigateToProperties,
   errors,
-  isLoading,
+  openModal,
+  filterOptions,
+  showOptions,
+  getComplexValue,
+  input,
+  onFilterOwnerClick,
 }) => {
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <Column>
-            {dataUI?.map((data, index) => (
-              <PropertyFormBlock
-                errors={errors}
-                key={index}
-                dataUI={data}
-                getInputValues={getInputValues}
-              />
-            ))}
-          </Column>
-          <ButtonContainer
-            cancelContent={"CANCEL"}
-            confirmContent={"SAVE"}
-            cancelType={"cancel"}
-            confirmType={"confirm"}
-            submit={submit}
-            navigateToProperties={navigateToProperties}
+      <Column>
+        {dataUI?.map((data, index) => (
+          <PropertyFormBlock
+            errors={errors}
+            key={index}
+            dataUI={data}
+            getInputValues={getInputValues}
+            openModal={openModal}
+            filterOptions={filterOptions}
+            showOptions={showOptions}
+            getComplexValue={getComplexValue}
+            input={input}
+            onFilterOwnerClick={onFilterOwnerClick}
           />
-        </>
-      )}
+        ))}
+      </Column>
+      <ButtonContainer
+        cancelContent={"CANCEL"}
+        confirmContent={"SAVE"}
+        cancelType={"cancel"}
+        confirmType={"confirm"}
+        submit={submit}
+        navigateToProperties={navigateToProperties}
+      />
     </>
   );
 };
 
-export default NewProperty;
+export default PropertyForm;

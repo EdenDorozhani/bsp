@@ -1,7 +1,17 @@
 import InputType from "../InputType";
 import classes from "./BlockElement.module.css";
 
-const BlockElement = ({ data, getInputValues, errors }) => {
+const BlockElement = ({
+  data,
+  getInputValues,
+  errors,
+  openModal,
+  filterOptions,
+  showOptions,
+  input,
+  getComplexValue,
+  onFilterOwnerClick,
+}) => {
   return (
     <div className={classes.row}>
       <label>
@@ -16,6 +26,12 @@ const BlockElement = ({ data, getInputValues, errors }) => {
         dataUI={data}
         picklistOptions={data.type.picklistValues}
         errors={errors[data.name]}
+        openModal={openModal}
+        filterOptions={filterOptions}
+        showOptions={showOptions}
+        getComplexValue={getComplexValue}
+        input={input}
+        onFilterOwnerClick={onFilterOwnerClick}
       />
     </div>
   );

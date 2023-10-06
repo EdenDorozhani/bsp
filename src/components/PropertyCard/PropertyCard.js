@@ -23,7 +23,27 @@ const PropertieCard = ({
   id,
   animationType,
 }) => {
+  const maxLength = 20;
+
+  const shouldTruncade = title.length > maxLength;
+
+  const truncadedTitle = shouldTruncade
+    ? `${title.slice(0, maxLength)}...`
+    : title;
+
   const options = cardAnimationOpt(animationType);
+
+  const balconyInfo = balcony !== "0" && (
+    <Paragraph content={`|  ${balcony} balcony `} type="number" />
+  );
+
+  const bathroomsInfo = bathrooms !== "0" && (
+    <Paragraph content={`|  ${bathrooms} baths `} type="number" />
+  );
+
+  const bedroomsInfo = bedrooms !== "0" && (
+    <Paragraph content={`|  ${bedrooms} beds `} type="number" />
+  );
 
   return (
     <Link
@@ -41,18 +61,12 @@ const PropertieCard = ({
             <Paragraph content={price} type="number" price={"yes"} />
             <p className={classes.buisnessType}>{buisnessType}</p>
           </div>
-          <p> {title}</p>
+          <p> {truncadedTitle}</p>
           <div className={classes.space}>
             {grosArea} m<sup>2</sup>
-            {balcony !== "0" && (
-              <Paragraph content={`|  ${balcony} balcony `} type="number" />
-            )}
-            {bathrooms !== "0" && (
-              <Paragraph content={`|  ${bathrooms} baths `} type="number" />
-            )}
-            {bedrooms !== "0" && (
-              <Paragraph content={`|  ${bedrooms} beds `} type="number" />
-            )}
+            {balconyInfo}
+            {bathroomsInfo}
+            {bedroomsInfo}
           </div>
           <p className={classes.place}>{`${city}, ${zone}`}</p>
         </div>

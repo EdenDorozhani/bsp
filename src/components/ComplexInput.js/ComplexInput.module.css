@@ -1,0 +1,12 @@
+.inputContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+}
+
+.input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid gray;
+  width: 201px;
+}

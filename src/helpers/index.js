@@ -1,4 +1,3 @@
-// ARRANGE DATA IN GROUPS
 export const modifyedData = (newPropertyUIData) => {
   const propertyBlocksData = [
     {
@@ -49,7 +48,6 @@ export const modifyedData = (newPropertyUIData) => {
   return propertyBlocksData;
 };
 
-// FILTERING DATA FOR FILTER INPUT FIELDS IN PROPERTIES PAGE
 export const getFilterInputs = (data) => {
   const modifiedUiData = data?.fields.filter(
     (field) =>
@@ -69,10 +67,8 @@ export const getFilterInputs = (data) => {
   return modifiedUiData;
 };
 
-// LOCALSTORAGE SESSION
 export const session = localStorage.getItem("session");
 
-//MODIFYING AND FILTERING DESCRIBE WITH GROUPING DATA
 export const getModifiedDescribeData = (
   describeDataWithGroup,
   describeData,
@@ -153,4 +149,34 @@ export const formatSearchParams = (inputValues) => {
   });
 
   return fieldsFormat;
+};
+
+export const getModalHeader = (type) => {
+  let header;
+  if (type === "owner") {
+    header = "Contacts";
+  } else {
+    header = "Developments";
+  }
+  return header;
+};
+
+export const getPrefix = (name) => {
+  let prefix;
+  if (name === "owner") {
+    prefix = "12x";
+  } else {
+    prefix = "48x";
+  }
+  return prefix;
+};
+
+export const getKey = (name) => {
+  let key;
+  if (name === "owner") {
+    key = "firstname";
+  } else {
+    key = "reference";
+  }
+  return key;
 };

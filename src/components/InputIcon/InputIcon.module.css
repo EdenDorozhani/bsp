@@ -1,0 +1,14 @@
+.iconContainer {
+  border-bottom: 1px solid gray;
+  padding: 0px 5px 0px 5px;
+}
+
+.iconContainer:hover {
+  border-bottom: 1px solid #007bff;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: smaller;
+  color: rgb(71, 71, 71);
+}

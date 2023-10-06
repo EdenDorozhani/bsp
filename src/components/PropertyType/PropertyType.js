@@ -1,7 +1,7 @@
 import classes from "./PropertyType.module.css";
 
-const PropertieType = ({ content }) => {
+const PropertyType = ({ content }) => {
   return <div className={classes.type}>{content}</div>;
 };
 
-export default PropertieType;
+export default PropertyType;

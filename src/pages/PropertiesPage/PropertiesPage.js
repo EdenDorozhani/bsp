@@ -1,52 +1,23 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Properties from "../../components/Properties";
 import { useNavigate } from "react-router-dom";
 import useFetchData from "../../hook/useFetchData";
-import { getFilterInputs } from "../../helpers";
-import { formatSearchParams } from "../../helpers";
+import { formatSearchParams, getFilterInputs } from "../../helpers";
 import { getFilteredFields, getPropertiesData } from "./PropertiesPage.actions";
+import usePaginationSystem from "../../hook/usePaginationSystem";
 
 const PropertiesPage = () => {
   const [animationComplete, setAnimationComplete] = useState(false);
-  const [animationType, setAnimationType] = useState({
-    Y_Positive: true,
-    X_Positive: false,
-    X_Negative: false,
-  });
-
-  const [pagination, setPagination] = useState({
-    page: 1,
-    from: 1,
-    to: 20,
-    itemsForPage: 20,
-  });
   const [itemsData, setItemsData] = useState();
   const [message, setMessage] = useState();
-  const [filteredItemsData, setFilteredItemsData] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const inputValues = useRef();
+  const [filteredItemsData, setFilteredItemsData] = useState();
+  const [inputValues, setInputValues] = useState();
   const navigate = useNavigate();
   const { newPropertyUIData } = useFetchData();
-  // GET PROPERTIES CARD DATA
-  useEffect(() => {
-    if (inputValues.current) return;
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const records = await getPropertiesData(pagination.page);
-        setItemsData(records);
-        setIsLoading(false);
-        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      } catch (err) {
-        console.error(err.message);
-      }
-    };
-    fetchData();
-  }, [pagination.page]);
 
-  //FETCH FILTERED PROPERTIES FUNCTION
   const fetchFilteredProperties = async (page) => {
-    const fieldsFormat = formatSearchParams(inputValues.current);
+    const fieldsFormat = formatSearchParams(inputValues);
     setIsLoading(true);
     setMessage("");
     try {
@@ -62,58 +33,43 @@ const PropertiesPage = () => {
     }
   };
 
-  //WHEN PAGE CHANGE GET FILTERED PROPERTIES
-  useEffect(() => {
-    if (!inputValues.current) return;
-    fetchFilteredProperties(pagination.page);
-  }, [pagination.page]);
+  const {
+    animationType,
+    pagination,
+    nextItems,
+    prevItems,
+    onSearchProperties,
+  } = usePaginationSystem(inputValues, fetchFilteredProperties);
 
-  //WHEN BUTTON CLICK GET FILTERED PROPERTIES
-  const onSearchPropertiesHandler = () => {
-    if (!inputValues.current) return;
-    setAnimationType({
-      Y_Positive: true,
-      X_Positive: false,
-      X_Negative: false,
-    });
-    setPagination({ ...pagination, page: 1, from: 1, to: 20 });
-    const page = pagination.page > 1 ? 1 : pagination.page;
-    fetchFilteredProperties(page);
-  };
+  // GET PROPERTIES CARD DATA
+  useEffect(() => {
+    if (inputValues && Object.keys(inputValues).length > 0) return;
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const records = await getPropertiesData(pagination.page);
+        setItemsData(records);
+        setFilteredItemsData("");
+        setIsLoading(false);
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+    fetchData();
+  }, [pagination, inputValues]);
 
   const onNextItems = () => {
     if (filteredItemsData?.moreRecords === false || itemsData === null) return;
     if (itemsData.length === 20) {
-      setAnimationType({
-        Y_Positive: false,
-        X_Positive: true,
-        X_Negative: false,
-      });
-      setPagination({
-        page: pagination.page + 1,
-        from: pagination.from + pagination.itemsForPage,
-        to: pagination.to + pagination.itemsForPage,
-        itemsForPage: 20,
-      });
+      nextItems();
     }
   };
-
   const onPrevItems = () => {
-    if (pagination.page > 1) {
-      setAnimationType({
-        Y_Positive: false,
-        X_Positive: false,
-        X_Negative: true,
-      });
-      setPagination({
-        page: pagination.page - 1,
-        from: pagination.from - pagination.itemsForPage,
-        to: pagination.to - pagination.itemsForPage,
-        itemsForPage: 20,
-      });
-    }
+    prevItems();
   };
 
+  // GET PROPERTIES CARD DATA
   const onAddNewProperties = () => {
     navigate("addnewproperties");
   };
@@ -122,7 +78,7 @@ const PropertiesPage = () => {
   const finalInputData = getFilterInputs(newPropertyUIData);
 
   const getInputValues = (name, value) => {
-    inputValues.current = { ...inputValues.current, [name]: value };
+    setInputValues({ ...inputValues, [name]: value });
   };
 
   const onAnimationComplete = () => {
@@ -141,7 +97,7 @@ const PropertiesPage = () => {
       UIData={finalInputData}
       message={message}
       getInputValues={getInputValues}
-      onSearchProperties={onSearchPropertiesHandler}
+      onSearchProperties={onSearchProperties}
       onAnimationComplete={onAnimationComplete}
       animationComplete={animationComplete}
       animationType={animationType}
