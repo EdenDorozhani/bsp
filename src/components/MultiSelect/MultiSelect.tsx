@@ -5,14 +5,14 @@ import { MultiSelectProps } from "./types";
 import { configTypeOfMulti, customStyles } from "./MultiSelect.config";
 
 const InputMulti = ({
-  value,
+  options,
   name,
   getInputValues,
   filterInputData,
   dataUI,
 }: MultiSelectProps) => {
-  const options = [value];
-  const optionType = configTypeOfMulti(options[0], filterInputData);
+  const multiOptions = [options];
+  const optionType = configTypeOfMulti(multiOptions[0], filterInputData);
 
   const onChangeHandler = (selectedOptions: any, action: any) => {
     let values;
@@ -34,7 +34,7 @@ const InputMulti = ({
   return (
     <div>
       {!!filterInputData ? <label>{filterInputData.label}</label> : ""}
-      {options.map((option, index) => (
+      {multiOptions.map((option, index) => (
         <Select
           isClearable={true}
           isMulti={!isBoolean}

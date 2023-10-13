@@ -63,6 +63,7 @@ export const modalContacts = async (page: number, type: string) => {
       module: type === "owner" ? "Contacts" : "Developments",
       page: page,
     });
+
     return response.data.result;
   } catch (err) {
     throw err;

@@ -13,7 +13,7 @@ function ConfirmButton({
     !!action && action();
   };
 
-  const setButtonType = () => {
+  const getButtonType = () => {
     let typeName;
     switch (type) {
       case "confirm":
@@ -28,11 +28,13 @@ function ConfirmButton({
     return typeName;
   };
 
+  const buttonType = getButtonType();
+
   return (
     <button
       disabled={disabled ? true : false}
       onClick={onClickHandler}
-      className={setButtonType()}
+      className={buttonType}
     >
       {isLoading ? "Waiting..." : content}
     </button>

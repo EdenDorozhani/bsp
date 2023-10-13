@@ -7,7 +7,7 @@ import {
 
 export type OptGroupSelectProps = {
   options?: PicklistValuesGroups & PicklistValues[];
-  name: string;
+  name?: string;
   getInputValues: (name: string, value: string) => void;
   dataUI?: FieldsGrouping & UIData;
 };

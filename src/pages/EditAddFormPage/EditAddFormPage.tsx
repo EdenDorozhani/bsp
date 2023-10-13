@@ -209,6 +209,7 @@ const DetailedItemPage = () => {
   };
 
   const openModal = async (type: string) => {
+    console.log(type);
     setIsLoadingFiltered(true);
     setType(type);
     setIsOpened(true);
@@ -262,11 +263,11 @@ const DetailedItemPage = () => {
     firstname: string,
     lastname: string,
     id: string,
-    name: string
+    name?: string
   ) => {
-    const prefix = getPrefix(name);
-    setInput({ ...input, [name]: `${firstname} ${lastname}` });
-    getInputValues(name, `${prefix}${id}`);
+    const prefix = getPrefix(name as string);
+    setInput({ ...input, [name as string]: `${firstname} ${lastname}` });
+    getInputValues(name as string, `${prefix}${id}`);
     setIsOpened(false);
     setShowOptions(false);
   };

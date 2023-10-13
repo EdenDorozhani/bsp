@@ -13,7 +13,7 @@ const FilterInputs = ({ data, getInputValues }: FilterInputsProps) => {
       content = (
         <MultiSelect
           filterInputData={data}
-          value={data.type.picklistValues}
+          options={data.type.picklistValues}
           getInputValues={getInputValues}
           name={data.name}
         />
@@ -23,9 +23,9 @@ const FilterInputs = ({ data, getInputValues }: FilterInputsProps) => {
       content = (
         <InputType
           type={data.type}
-          inputName={data.name}
-          data={data}
+          dataUI={data}
           getInputValues={getInputValues}
+          propertiesFilterInputs={true}
         />
       );
   }

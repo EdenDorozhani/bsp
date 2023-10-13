@@ -14,6 +14,8 @@ const Table = ({
   message,
   isDisabled,
 }: TableProps) => {
+  console.log(type);
+
   const typeOfHeaders = () => {
     let headers: any[] | undefined = [];
     if (type === "development") {
@@ -27,6 +29,7 @@ const Table = ({
   const typeOfRecords = (record: ObjectString) => {
     let records;
     if (type === "development") {
+      console.log(record);
       records = (
         <tr
           key={record.id}

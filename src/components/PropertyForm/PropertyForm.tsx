@@ -40,8 +40,8 @@ const PropertyForm = ({
         confirmContent={"SAVE"}
         cancelType={"cancel"}
         confirmType={"confirm"}
-        submit={submit}
-        navigateToProperties={navigateToProperties}
+        onSubmit={submit}
+        onCancel={navigateToProperties}
       />
     </>
   );

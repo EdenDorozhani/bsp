@@ -23,7 +23,6 @@ const CheckBox = ({ name, getInputValues, dataUI }: CheckboxProps) => {
       setOn(true);
       return;
     }
-
     setOn(!on);
     getInputValues(name, !on);
   };
@@ -33,7 +32,7 @@ const CheckBox = ({ name, getInputValues, dataUI }: CheckboxProps) => {
       onChange={onChangeHandler}
       type="checkbox"
       name={name}
-      checked={on ? true : false}
+      checked={on}
       value={dataUI?.value}
     />
   );

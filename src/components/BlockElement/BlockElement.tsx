@@ -22,10 +22,8 @@ const BlockElement = ({
       </label>
       <InputType
         type={!!data.uitype ? data.uitype : data.type.name}
-        inputName={data.name}
         getInputValues={getInputValues}
         dataUI={data}
-        picklistOptions={data.type.picklistValues}
         errors={errors[data.name]}
         openModal={openModal}
         filterOptions={filterOptions}
@@ -33,6 +31,7 @@ const BlockElement = ({
         getComplexValue={getComplexValue}
         input={input}
         onFilterOwnerClick={onFilterOwnerClick}
+        propertiesFilterInputs={false}
       />
     </div>
   );

@@ -14,6 +14,6 @@ export type PropertyFormBlockProps = {
     firstname: string,
     lastname: string,
     id: string,
-    name: string
+    name?: string
   ) => void;
 };

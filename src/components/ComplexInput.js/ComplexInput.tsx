@@ -22,6 +22,8 @@ const ComplexInput = ({
     getInputValues(name, value);
   };
 
+  console.log(name);
+
   return (
     <div>
       <div className={classes.inputContainer}>
@@ -31,9 +33,9 @@ const ComplexInput = ({
           placeholder={placeholder}
           className={classes.input}
           autoComplete="off"
-          value={input?.[name]}
+          value={input?.[name ?? ""]}
         />
-        <InputIcon icon={stIcon} name={name} onSearch={openModal} />
+        <InputIcon icon={stIcon} name={name} action={openModal} />
       </div>
       {showOptions === name && (
         <Picklist

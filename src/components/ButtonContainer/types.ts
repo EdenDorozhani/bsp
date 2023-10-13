@@ -1,6 +1,6 @@
 export type ButtonContainerProps = {
-  submit: () => void;
-  navigateToProperties: () => void;
+  onSubmit: () => void;
+  onCancel: () => void;
   cancelContent: string;
   confirmContent: string;
   cancelType: string;

@@ -11,11 +11,8 @@ import SimpleInput from "../SimpleInput";
 
 const InputField = ({
   type,
-  inputName,
   getInputValues,
-  data,
   dataUI,
-  picklistOptions,
   errors,
   openModal,
   filterOptions,
@@ -23,6 +20,7 @@ const InputField = ({
   getComplexValue,
   input,
   onFilterOwnerClick,
+  propertiesFilterInputs,
 }: InputTypeProps) => {
   let component;
 
@@ -32,9 +30,9 @@ const InputField = ({
       component = (
         <SimpleInput
           getInputValues={getInputValues}
-          name={inputName}
-          data={data}
+          name={dataUI?.name}
           dataUI={dataUI}
+          propertiesFilterInputs={propertiesFilterInputs}
         />
       );
       break;
@@ -43,8 +41,8 @@ const InputField = ({
     case "15":
       component = (
         <OptSelect
-          value={picklistOptions}
-          name={inputName}
+          options={dataUI?.type.picklistValues}
+          name={dataUI?.name}
           getInputValues={getInputValues}
           dataUI={dataUI}
         />
@@ -54,8 +52,8 @@ const InputField = ({
     case "53":
       component = (
         <OptGroupSelect
-          options={picklistOptions}
-          name={inputName}
+          options={dataUI?.type.picklistValues}
+          name={dataUI?.name}
           getInputValues={getInputValues}
           dataUI={dataUI}
         />
@@ -67,7 +65,7 @@ const InputField = ({
         <CheckBox
           dataUI={dataUI}
           getInputValues={getInputValues}
-          name={inputName}
+          name={dataUI?.name}
         />
       );
       break;
@@ -75,8 +73,8 @@ const InputField = ({
     case "33":
       component = (
         <MultiSelect
-          value={picklistOptions}
-          name={inputName}
+          options={dataUI?.type.picklistValues}
+          name={dataUI?.name}
           getInputValues={getInputValues}
           dataUI={dataUI}
         />
@@ -88,7 +86,7 @@ const InputField = ({
         <ComplexInput
           stIcon={faMagnifyingGlass}
           ndIcon={faPlus}
-          name={inputName}
+          name={dataUI?.name}
           getInputValues={getInputValues}
           placeholder="Type to search"
           openModal={openModal}
@@ -104,9 +102,9 @@ const InputField = ({
       component = (
         <SimpleInput
           getInputValues={getInputValues}
-          name={inputName}
+          name={dataUI?.name}
           dataUI={dataUI}
-          data={data}
+          propertiesFilterInputs={propertiesFilterInputs}
         />
       );
   }

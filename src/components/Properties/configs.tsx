@@ -3,12 +3,12 @@ import React from "react";
 import FilterInputs from "../FilterInputs";
 import classes from "./Properties.module.css";
 import { motion } from "framer-motion";
-import { UIData } from "../../../globaltypes";
+import { FieldsGrouping, UIData } from "../../../globaltypes";
 
 export const actionAfterAnimation = (
   animationComplete: boolean,
   onAnimationComplete: () => void,
-  UIData: UIData[],
+  UIData: (UIData & FieldsGrouping)[],
   getInputValues: (name: string, value: string | boolean) => void,
   onSearchProperties: () => void
 ) => {

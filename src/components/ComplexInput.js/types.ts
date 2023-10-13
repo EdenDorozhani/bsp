@@ -4,7 +4,7 @@ import { ObjectString } from "../Table/types";
 export type ComplexInputProps = {
   stIcon: IconProp;
   ndIcon: IconProp;
-  name: string;
+  name?: string;
   getInputValues: (name: string, value: string) => void;
   placeholder: string;
   openModal?: (type: string) => Promise<void>;
@@ -16,6 +16,6 @@ export type ComplexInputProps = {
     firstname: string,
     lastname: string,
     id: string,
-    name: string
+    name?: string
   ) => void;
 };

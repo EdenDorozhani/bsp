@@ -3,11 +3,11 @@ import classes from "./InputIcon.module.css";
 import React from "react";
 import { InputIconProps } from "./types";
 
-const InputIcon = ({ icon, onSearch, name }: InputIconProps) => {
+const InputIcon = ({ icon, action, name }: InputIconProps) => {
   return (
     <div
       className={classes.iconContainer}
-      onClick={() => !!onSearch && onSearch(name)}
+      onClick={() => action && action(name as string)}
     >
       <FontAwesomeIcon icon={icon} className={classes.icon} />
     </div>

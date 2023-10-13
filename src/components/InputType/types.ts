@@ -1,18 +1,11 @@
-import {
-  FieldsGrouping,
-  PicklistValues,
-  PicklistValuesGroups,
-  UIData,
-} from "../../../globaltypes";
+import { FieldsGrouping, UIData } from "../../../globaltypes";
 import { ObjectString } from "../Table/types";
 
 export type InputTypeProps = {
   type: string;
-  inputName: string;
   getInputValues: (name: string, value: string | boolean) => void;
-  data?: UIData;
+
   dataUI?: UIData & FieldsGrouping;
-  picklistOptions?: PicklistValues[] & PicklistValuesGroups;
   errors?: string;
   openModal?: (type: string) => Promise<void>;
   filterOptions?: ObjectString[] | null;
@@ -23,6 +16,7 @@ export type InputTypeProps = {
     firstname: string,
     lastname: string,
     id: string,
-    name: string
+    name?: string
   ) => void;
+  propertiesFilterInputs?: boolean;
 };

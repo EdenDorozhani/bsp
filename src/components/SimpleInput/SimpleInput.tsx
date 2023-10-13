@@ -5,11 +5,11 @@ import { SimpleInputProps } from "./types";
 const SimpleInput = ({
   name,
   getInputValues,
-  data,
   dataUI,
   disable,
   placeholder,
   errors,
+  propertiesFilterInputs,
 }: SimpleInputProps) => {
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -30,7 +30,7 @@ const SimpleInput = ({
 
   return (
     <div className={classes.simple}>
-      {data ? <label>{data.label}</label> : ""}
+      {propertiesFilterInputs ? <label>{dataUI?.label}</label> : ""}
       <input
         defaultValue={configDefaultValue}
         onChange={onChangeHandler}

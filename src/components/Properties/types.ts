@@ -1,4 +1,4 @@
-import { UIData } from "../../../globaltypes";
+import { FieldsGrouping, UIData } from "../../../globaltypes";
 import { ObjectString } from "../Table/types";
 
 export type PropertiesProps = {
@@ -9,7 +9,7 @@ export type PropertiesProps = {
   prevItems: () => void;
   onAddNewProperties: () => void;
   isLoading: boolean;
-  UIData: UIData[];
+  UIData: (UIData & FieldsGrouping)[];
   getInputValues: (name: string, value: string | boolean) => void;
   onSearchProperties: () => void;
   message: string | undefined;

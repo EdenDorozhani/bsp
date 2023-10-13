@@ -8,7 +8,7 @@ const IconButton = ({ iconName, action }: IconButtonProps) => {
     <FontAwesomeIcon
       className={classes.icon}
       icon={iconName}
-      onClick={() => action()}
+      onClick={action}
     />
   );
 };

@@ -14,6 +14,6 @@ export type BlockElementProps = {
     firstname: string,
     lastname: string,
     id: string,
-    name: string
+    name?: string
   ) => void;
 };

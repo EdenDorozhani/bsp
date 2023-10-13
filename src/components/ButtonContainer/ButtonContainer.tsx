@@ -5,8 +5,8 @@ import React from "react";
 import { ButtonContainerProps } from "./types";
 
 const ButtonContainer = ({
-  submit,
-  navigateToProperties,
+  onSubmit,
+  onCancel,
   cancelContent,
   confirmContent,
   cancelType,
@@ -20,12 +20,8 @@ const ButtonContainer = ({
       exit={{ x: "100%" }}
       transition={{ duration: 0.7 }}
     >
-      <Button
-        action={navigateToProperties}
-        content={cancelContent}
-        type={cancelType}
-      />
-      <Button action={submit} content={confirmContent} type={confirmType} />
+      <Button action={onCancel} content={cancelContent} type={cancelType} />
+      <Button action={onSubmit} content={confirmContent} type={confirmType} />
     </motion.div>
   );
 };

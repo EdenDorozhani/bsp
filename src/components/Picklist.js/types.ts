@@ -6,7 +6,7 @@ export type PicklistProps = {
     firstname: string,
     lastname: string,
     id: string,
-    name: string
+    name?: string
   ) => void;
-  name: string;
+  name?: string;
 };

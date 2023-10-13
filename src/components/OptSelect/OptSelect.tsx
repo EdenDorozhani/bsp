@@ -3,7 +3,7 @@ import React from "react";
 import { OptSelectProps } from "./types";
 
 const InputPicklist = ({
-  value,
+  options,
   name,
   getInputValues,
   dataUI,
@@ -21,7 +21,7 @@ const InputPicklist = ({
   return (
     <select onChange={onChangeHandler} className={classes.select} name={name}>
       <option>{dataUI?.uitype ? dataUI.value : "Select an Option"}</option>
-      {value?.map((value: { value: string }, index: number) => {
+      {options?.map((value: { value: string }, index: number) => {
         return <option key={index}>{value.value}</option>;
       })}
     </select>
